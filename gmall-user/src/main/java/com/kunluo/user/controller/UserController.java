@@ -27,4 +27,24 @@ public class UserController {
         List<UserInfo> userInfoList =  userService.getAllUser();
         return userInfoList;
     }
+
+    @RequestMapping("deleUserById")
+    @ResponseBody
+    public String deleUserById(String id){
+        return userService.deleUserById(id);
+   }
+    @RequestMapping("modifyUserById")
+    @ResponseBody
+   public String modifyUserById(UserInfo userInfo){
+        return userService.modifyUserById(userInfo);
+   }
+
+   @RequestMapping("addUserInfo")
+    @ResponseBody
+    public String  addUserInfo(UserInfo userInfo){
+       return userService.addUserInfo(userInfo);
+   }
+
+
+
 }

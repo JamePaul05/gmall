@@ -21,4 +21,23 @@ public class UserServiceImpl implements UserService {
     public List<UserInfo> getAllUser() {
         return userMapper.selectAll();
     }
+
+    @Override
+    public String deleUserById(String id) {
+        return Integer.toString( userMapper.deleteByPrimaryKey(id));
+    }
+
+    @Override
+    public String modifyUserById(UserInfo userInfo) {
+        UserInfo existUserInfo = userMapper.selectByPrimaryKey(userInfo.getId());
+        if(null != existUserInfo){
+            return Integer.toString(userMapper.updateByPrimaryKey(userInfo));
+        }
+        return "用户不存在";
+    }
+
+    @Override
+    public String addUserInfo(UserInfo userInfo) {
+        return Integer.toString(userMapper.insert(userInfo));
+    }
 }
