@@ -2,52 +2,33 @@ package com.kunluo.user.bean;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
+import javax.persistence.Transient;
+import java.io.Serializable;
 
 /**
- * @description: 用户实体类
- * @author: kunluo
- * @create: 2019-07-07 11:43
- **/
-public class UserInfo {
-
-    @Id
-    private String id;
-    // 用户名称
-    @Column
-    private String loginName;
-    // 用户昵称
-    @Column
-    private String nickName;
-    @Column
-    private String passwd;
-    // 用户姓名
-    @Column
-    private String name;
-    @Column
-    private String phoneNum;
-    @Column
-    private String email;
-    // 头像
-    @Column
-    private String headImg;
-    // 用户级别
-    @Column
-    private String userLevel;
-
-    public UserInfo() {
-    }
-
-    public UserInfo(String id, String loginName, String nickName, String passwd, String name, String phoneNum, String email, String headImg, String userLevel) {
-        this.id = id;
-        this.loginName = loginName;
-        this.nickName = nickName;
-        this.passwd = passwd;
-        this.name = name;
-        this.phoneNum = phoneNum;
-        this.email = email;
-        this.headImg = headImg;
-        this.userLevel = userLevel;
-    }
+ * @param
+ * @return
+ */
+   public class UserInfo implements Serializable {
+        @Id
+        @Column
+        private String id;
+        @Column
+        private String loginName;
+        @Column
+        private String nickName;
+        @Column
+        private String passwd;
+        @Column
+        private String name;
+        @Column
+        private String phoneNum;
+        @Column
+        private String email;
+        @Column
+        private String headImg;
+        @Column
+        private String userLevel;
 
     public String getId() {
         return id;
