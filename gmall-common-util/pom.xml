@@ -7,6 +7,8 @@
     <groupId>com.kunluo</groupId>
     <artifactId>gmall-common-util</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+
     <parent>
         <groupId>com.kunluo</groupId>
         <artifactId>gmall-parent</artifactId>

@@ -1,6 +1,6 @@
 package com.kunluo.user.controller;
 
-import com.kunluo.user.bean.UserInfo;
+import com.kunluo.user.UserInfo;
 import com.kunluo.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

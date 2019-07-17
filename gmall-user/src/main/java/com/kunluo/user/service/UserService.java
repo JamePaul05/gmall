@@ -1,6 +1,8 @@
 package com.kunluo.user.service;
 
-import com.kunluo.user.bean.UserInfo;
+
+
+import com.kunluo.bean.UserInfo;
 
 import java.util.List;
 
