@@ -3,9 +3,10 @@ package com.kunluo.user.service.impl;
 
 
 import com.kunluo.bean.UserInfo;
+import com.kunluo.user.mapper.UserMapper;
 import com.kunluo.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 
@@ -15,12 +16,14 @@ import java.util.List;
  * @author: kunluo
  * @create: 2019-07-07 11:57
  **/
-@Service
+@com.alibaba.dubbo.config.annotation.Service
 public class UserServiceImpl implements UserService {
+     @Autowired
+     private UserMapper userMapper;
 
     @Override
     public List<UserInfo> getAllUser() {
-        return null;
+        return userMapper.selectAll();
     }
 
     @Override

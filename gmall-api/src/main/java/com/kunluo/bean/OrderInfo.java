@@ -1,8 +1,8 @@
 package com.kunluo.bean;
 
-import com.atguigu.gmall.bean.enums.OrderStatus;
-import com.atguigu.gmall.bean.enums.PaymentWay;
-import com.atguigu.gmall.bean.enums.ProcessStatus;
+import com.kunluo.bean.enums.OrderStatus;
+import com.kunluo.bean.enums.PaymentWay;
+import com.kunluo.bean.enums.ProcessStatus;
 
 import javax.persistence.*;
 import java.io.Serializable;

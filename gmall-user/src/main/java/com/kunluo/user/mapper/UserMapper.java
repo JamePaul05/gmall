@@ -3,6 +3,7 @@ package com.kunluo.user.mapper;
 
 import com.kunluo.bean.UserInfo;
 import org.apache.ibatis.session.RowBounds;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import tk.mybatis.mapper.common.Mapper;
 

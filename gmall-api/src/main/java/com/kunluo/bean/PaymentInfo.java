@@ -1,6 +1,6 @@
 package com.kunluo.bean;
 
-import com.atguigu.gmall.bean.enums.PaymentStatus;
+import com.kunluo.bean.enums.PaymentStatus;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
