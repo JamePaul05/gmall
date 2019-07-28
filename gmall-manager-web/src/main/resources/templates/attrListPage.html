@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<table id="dg" class="easyui-datagrid" title="属性列表"
+<table id="td" class="easyui-datagrid" title="属性列表"
        data-options="singleSelect:true ,method:'get',toolbar:'#tb'">
     <thead>
     <tr>
@@ -16,19 +16,54 @@
 </table>
 <div id="tb" style="padding:5px;height:auto">
     <div style="margin-bottom:5px">
-        <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true">添加</a>
+        <a href="#" class="easyui-linkbutton" onclick="openDialog()" iconCls="icon-add" plain="true">添加</a>
         <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true">编辑</a>
         <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
     </div>
     <div>
         一级分类：
-        <select id="ctg1ForAttrList"  class="easyui-combobox" style="width:100px" data-options="valueField:'id',textField:'name',url:'getCatalog1'"></select>
+        <select id="ctg1ForAttrList"  class="easyui-combobox" style="width:100px"  data-options="valueField:'id',textField:'name',url:'getCatalog1'"></select>
         二级分类：
-        <select name="ctg2ForAttrList" id="ctg2ForAttrList"  class="easyui-combobox"  style="width:100px" ></select>
+        <select name="ctg2ForAttrList" id="ctg2ForAttrList"  class="easyui-combobox" data-options="valueField:'id',textField:'name'" style="width:100px" ></select>
         三级分类：
-        <select name="ctg3ForAttrList" id="ctg3ForAttrList"  class="easyui-combobox"   style="width:100px" ></select>
+        <select name="ctg3ForAttrList" id="ctg3ForAttrList"  class="easyui-combobox" data-options="valueField:'id',textField:'name'"  style="width:100px" ></select>
+        <a href="#" class="easyui-linkbutton" onclick="getAttrListByctg3Id()" data-options="iconCls:'icon-search'" style="width:120px">刷新属性列表</a>
     </div>
+    <div th:include="attrInfoPage"></div>
 </div>
+ <script language="JavaScript">
+   $("#ctg1ForAttrList").combobox({
+       //  rec :正在操作的一行对象
+       onSelect:function (rec) {
+           // 清空二级、三级分类的值
+           $("#ctg2ForAttrList").combobox("setValue","");
+           $("#ctg3ForAttrList").combobox("setValue","");
+           var  url = "getCatalog2?cataLog1Id="+ rec.id;
+           $('#ctg2ForAttrList').combobox('reload', url);
+       }
+   });
 
+   $("#ctg2ForAttrList").combobox({
+       onSelect:function (rec) {
+           // 清空三级分类值
+           $("#ctg3ForAttrList").combobox("setValue","");
+           var  url = "getCatalog3?cataLog2Id="+ rec.id;
+           $('#ctg3ForAttrList').combobox('reload', url);
+       }
+   });
+   function getAttrListByctg3Id() {
+       var ctg3Id =  $("#ctg3ForAttrList").combobox("getValue");
+       $("#td").datagrid({
+           url:"getAllAttrListByCtg3Id?cataLog3Id="+ctg3Id
+       })
+
+
+   };
+   function openDialog() {
+       $('#dlg').dialog('open');
+       initDataGrid();
+   }
+ </script>
 </body>
+
 </html>

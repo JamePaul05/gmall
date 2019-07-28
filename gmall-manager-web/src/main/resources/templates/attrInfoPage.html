@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--添加属性的模态框-->
+<div id="dlg" class="easyui-dialog" title="编辑属性" style="width:600px;height:500px;"
+     closed="true"  data-options="iconCls:'icon-save',resizable:true,modal:true" buttons="#bb" >
+    <form id="attrForm">
+        <br/>
+        <label>属性名称:</label>
+        <input  id="attrName" name="attrName" class="easyui-textbox" data-options="" style="width:100px"/>
+        <input  id="attrId" name="attrId" type="hidden"  />
+        <br/><br/>
+        <table id="dg_av" class="easyui-datagrid" title="属性值列表"></table>
+    </form>
+</div>
+
+<div id="bb">
+    <a href="#" class="easyui-linkbutton" onclick="saveAttr()">保存</a>
+    <a href="#" class="easyui-linkbutton">关闭</a>
+</div>
+
+</body>
+<script language="JavaScript">
+    function initDataGrid() {
+        $("#dg_av").datagrid({
+            columns:[[
+                { field:'id',title:'编号',width:'20%'},
+                { field:'valueName',title:'属性值名称',width:'80%',
+                    editor: {
+                        type: 'validatebox', options: { required: true}  //必填项
+                    }
+                }
+            ]],
+            toolbar:[{text:'添加',iconCls:'icon-add',
+                handler:function () {
+                     $("#dg_av").datagrid("appendRow",{id:'',valueName:''})
+                }
+            },'-',
+                {text:'删除',iconCls:'icon-remove',
+                    handler:function () {
+                    // 得到选中的行
+                    var row = $("#dg_av").datagrid("getSelected")
+                        // 判断该行是否存在
+                        if (row) {
+                          // 存在就去获取这个选中行的下标
+                            var rowIndex = $("#dg_av").datagrid('getRowIndex', row);
+                            // 通过该下标删除该元素
+                            $("#dg_av").datagrid('deleteRow', rowIndex);
+                        }
+                    }
+                }],
+
+        });
+
+    }
+</script>
+</html>
